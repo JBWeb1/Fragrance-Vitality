@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shop | Fragrance Vitality</title>
+<style>
+/* Reset & fonts */
+* {margin:0; padding:0; box-sizing:border-box; font-family:Poppins,sans-serif;}
+body {background:#111; color:#fff; line-height:1.6;}
+a {text-decoration:none; color:inherit;}
+h2 {font-family:'Playfair Display', serif; font-size:2.8rem; text-align:center; margin-bottom:50px; color:#FFD700;}
+
+/* Header */
+header {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:20px 50px; background:#000; position:sticky; top:0; z-index:1000;
+}
+header .logo {
+  font-family:'Playfair Display', serif; font-size:1.8rem; font-weight:bold; color:#FFD700;
+}
+header nav a {
+  color:#fff; margin:0 15px; font-weight:500; transition:0.3s;
+}
+header nav a:hover, header nav a.active { color:#FFD700; }
+
+/* Filters */
+.filters {
+  display:flex; justify-content:space-between; gap:20px; padding:20px 50px; flex-wrap:wrap; background:#111;
+}
+.filter-sidebar {background:#1a1a1a; padding:20px; border-radius:15px; color:#fff; width:220px;}
+.filter-sidebar h3 {color:#FFD700; margin-bottom:15px;}
+.filter-sidebar label {display:block; margin-bottom:10px; cursor:pointer;}
+.filter-sidebar button {margin-top:10px; background:#FFD700; color:#111; border:none; padding:10px 20px; border-radius:50px; font-weight:bold; cursor:pointer;}
+.filter-sidebar button:hover {background:#fff; color:#FFD700; transform:scale(1.05);}
+
+/* Sort */
+.sort-dropdown {display:flex; align-items:center; gap:10px; color:#fff;}
+.sort-dropdown select {padding:8px 15px; border-radius:10px; border:none; font-weight:bold;}
+
+/* Products grid */
+.products {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+  padding:40px 50px;
+  justify-items:center;
+}
+.product-card {
+  position:relative; overflow:hidden; border-radius:15px; box-shadow:0 5px 20px rgba(0,0,0,0.3);
+  background:#1a1a1a; transition:0.5s; cursor:pointer; width:100%;
+  max-width:280px;
+}
+.product-card:hover {transform:translateY(-10px); box-shadow:0 10px 30px rgba(0,0,0,0.6);}
+.product-card img {width:100%; display:block; transition:0.5s; border-radius:10px;}
+.product-card:hover img {transform:scale(1.05);}
+.product-info {
+  position:absolute; bottom:0; left:0; width:100%; padding:20px; background:rgba(0,0,0,0.7);
+  color:#fff; text-align:center; transform:translateY(100%); transition:0.4s;
+}
+.product-card:hover .product-info {transform:translateY(0);}
+.product-info h3 {color:#FFD700; font-family:'Playfair Display', serif; margin-bottom:10px;}
+.product-info button {
+  background:#FFD700; color:#111; border:none; padding:12px 30px; border-radius:50px;
+  font-weight:bold; cursor:pointer; transition:0.3s;
+}
+.product-info button:hover {background:#fff; color:#FFD700; transform:scale(1.05);}
+
+/* Footer */
+footer {text-align:center; background:#000; color:#ccc; padding:30px 20px; margin-top:50px;}
+
+/* Scroll animation */
+.fade-in {opacity:0; transform:translateY(50px); transition:1s;}
+.fade-in.visible {opacity:1; transform:translateY(0);}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Fragrance Vitality</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contacts.html">Contact</a>
+  </nav>
+</header>
+
+<section class="filters">
+  <div class="filter-sidebar">
+    <h3>Filter by Type</h3>
+    <label><input type="checkbox" class="filter-type" value="Floral"> Floral</label>
+    <label><input type="checkbox" class="filter-type" value="Oriental"> Oriental</label>
+    <label><input type="checkbox" class="filter-type" value="Woody"> Woody</label>
+    <label><input type="checkbox" class="filter-type" value="Fresh"> Fresh</label>
+    <label><input type="checkbox" class="filter-type" value="Gourmand"> Gourmand</label>
+
+    <h3>Filter by Price</h3>
+    <label><input type="radio" name="price" value="50-85"> R50 - R85</label>
+    <label><input type="radio" name="price" value="86-100"> R86 - R100</label>
+    <label><input type="radio" name="price" value="101-120"> R101 - R120</label>
+
+    <button onclick="applyFilters()">Apply Filters</button>
+    <button onclick="resetFilters()">Reset Filters</button>
+  </div>
+
+  <div class="sort-dropdown">
+    <label for="sort">Sort by:</label>
+    <select id="sort" onchange="applySorting()">
+      <option value="default">Default</option>
+      <option value="priceLow">Price: Low to High</option>
+      <option value="priceHigh">Price: High to Low</option>
+    </select>
+  </div>
+</section>
+
+<section>
+  <h2>Our Collection</h2>
+
+  <div class="products">
+
+    <!-- ORIGINAL PRODUCTS -->
+    <div class="product-card fade-in" data-type="Floral" data-price="70">
+      <img src="qr14.webp">
+      <div class="product-info"><h3>212 VIP</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Floral" data-price="70">
+      <img src="qr15.webp">
+      <div class="product-info"><h3>ACQUA DI GIO</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Oriental" data-price="80">
+      <img src="qr16.jpg">
+      <div class="product-info"><h3>BLEU DE CHANEL</h3><p>R80</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Oriental" data-price="60">
+      <img src="qr17.webp">
+      <div class="product-info"><h3>BVLGARI MAN</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Woody" data-price="80">
+      <img src="ar18.webp">
+      <div class="product-info"><h3>Desire Perfume</h3><p>R80</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="60">
+      <img src="qr18.webp">
+      <div class="product-info"><h3>Fahrenheit</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="60">
+      <img src="f1.avif">
+      <div class="product-info"><h3>Hugo</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <!-- 10 PLACEHOLDERS YOU ADDED -->
+    <div class="product-card fade-in" data-type="Fresh" data-price="70">
+      <img src="f2.jpg">
+      <div class="product-info"><h3>L'EAU D'ISSEY</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Floral" data-price="70">
+      <img src="f3.jpg">
+      <div class="product-info"><h3>INVICTUS</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Woody" data-price="60">
+      <img src="f4.jpg">
+      <div class="product-info"><h3>Legend</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Oriental" data-price="70">
+      <img src="f5.jpg">
+      <div class="product-info"><h3>Light Blue</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Gourmand" data-price="60">
+      <img src="f6.jpg">
+      <div class="product-info"><h3>One Million</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="70">
+      <img src="f7.jpg">
+      <div class="product-info"><h3>Only the Brave</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Floral" data-price="70">
+      <img src="f8.webp">
+      <div class="product-info"><h3>Sauvage</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Oriental" data-price="80">
+      <img src="f9.jpg">
+      <div class="product-info"><h3>Scandal</h3><p>R80</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Woody" data-price="80">
+      <img src="f11.jpg">
+      <div class="product-info"><h3>Terre D'Hermes</h3><p>R80</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Gourmand" data-price="60">
+      <img src="f12.jpg">
+      <div class="product-info"><h3>Tom Ford Noir</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+
+    <!-- ⭐⭐⭐ 22 NEW PRODUCT PLACEHOLDERS ⭐⭐⭐ -->
+
+    <div class="product-card fade-in" data-type="Floral" data-price="70">
+      <img src="p1.webp">
+      <div class="product-info"><h3>Versage Eros</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="65">
+      <img src="p2.jpg">
+      <div class="product-info"><h3>versage Pour Homme</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Woody" data-price="75">
+      <img src="p3.webp">
+      <div class="product-info"><h3>Alien</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Gourmand" data-price="60">
+      <img src="p4.webp">
+      <div class="product-info"><h3>Armani si</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Oriental" data-price="85">
+      <img src="p5.jfif">
+      <div class="product-info"><h3>Aromatics Elixir</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="70">
+      <img src="p6.jpg">
+      <div class="product-info"><h3>Be Delicious</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Floral" data-price="75">
+      <img src="p7.jfif">
+      <div class="product-info"><h3>Black Opium</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Woody" data-price="80">
+      <img src="p8.webp">
+      <div class="product-info"><h3>Chanel No.5</h3><p>R80</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="70">
+      <img src="p9.jpeg">
+      <div class="product-info"><h3>Coco Mademoislle/h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Oriental" data-price="90">
+      <img src="p10.webp">
+      <div class="product-info"><h3>Elie Saab La Parfum</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Floral" data-price="60">
+      <img src="p11.jpg">
+      <div class="product-info"><h3>Good Girl</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Gourmand" data-price="70">
+      <img src="p12.jpg">
+      <div class="product-info"><h3>Gucci Rush</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="60">
+      <img src="p13.webp">
+      <div class="product-info"><h3>Hypnotic Poison</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Oriental" data-price="80">
+      <img src="p14.jpg">
+      <div class="product-info"><h3>J'Adore</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Woody" data-price="70">
+      <img src="p15.avif">
+      <div class="product-info"><h3>La Vie Est Belle</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Floral" data-price="65">
+      <img src="p16.jpg">
+      <div class="product-info"><h3>Lady Million</h3><p>R60</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="75">
+      <img src="p17.avif">
+      <div class="product-info"><h3>Light Blue</h3><p>R80</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Gourmand" data-price="60">
+      <img src="p18.jpg">
+      <div class="product-info"><h3>Narciso Rodriguez</h3><p>R80</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Woody" data-price="85">
+      <img src="p19.webp">
+      <div class="product-info"><h3>Olypea</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Fresh" data-price="70">
+      <img src="p20.jpeg">
+      <div class="product-info"><h3>Scandal</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+
+    <div class="product-card fade-in" data-type="Floral" data-price="70">
+      <img src="p21.webp">
+      <div class="product-info"><h3>Versace Eros</h3><p>R70</p><button>Add to Cart</button></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Fragrance Vitality | All Rights Reserved</p>
+</footer>
+
+<script>
+// Scroll animation
+const faders = document.querySelectorAll('.fade-in');
+window.addEventListener('scroll', () => {
+  faders.forEach(fader => {
+    const rect = fader.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 100) {
+      fader.classList.add('visible');
+    }
+  });
+});
+
+// Filters
+function applyFilters(){
+  const types = Array.from(document.querySelectorAll('.filter-type:checked')).map(cb => cb.value);
+  const price = document.querySelector('input[name="price"]:checked')?.value || '';
+  document.querySelectorAll('.product-card').forEach(card => {
+    const type = card.dataset.type;
+    const priceVal = parseFloat(card.dataset.price);
+    let typeMatch = types.length ? types.includes(type) : true;
+    let priceMatch = true;
+    if(price){
+      const [min,max] = price.split('-').map(Number);
+      priceMatch = priceVal >= min && priceVal <= max;
+    }
+    card.style.display = (typeMatch && priceMatch) ? 'block' : 'none';
+  });
+}
+
+function resetFilters(){
+  document.querySelectorAll('.filter-type').forEach(cb => cb.checked = false);
+  document.querySelectorAll('input[name="price"]').forEach(rb => rb.checked = false);
+  applyFilters();
+}
+
+// Sorting
+function applySorting(){
+  const sort = document.getElementById('sort').value;
+  const grid = document.querySelector('.products');
+  const cards = Array.from(grid.children);
+  if(sort === 'priceLow') cards.sort((a,b) => a.dataset.price - b.dataset.price);
+  if(sort === 'priceHigh') cards.sort((a,b) => b.dataset.price - a.dataset.price);
+  cards.forEach(card => grid.appendChild(card));
+}
+</script>
+
+</body>
+</html>

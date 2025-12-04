@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Luxury Essence</title>
+<style>
+    *{
+        margin:0; padding:0; 
+        box-sizing:border-box;
+        font-family:Poppins, sans-serif;
+    }
+    body{
+        background:#111;
+        color:#fff;
+        line-height:1.8;
+    }
+
+    /* Navigation */
+    nav{
+        width:100%;
+        padding:20px 40px;
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        background:#000;
+        position:sticky;
+        top:0;
+        z-index:10;
+    }
+
+    nav a{
+        color:#fff;
+        text-decoration:none;
+        margin:0 15px;
+        font-weight:500;
+        transition:0.3s;
+    }
+    nav a:hover{color:#c89df5;}
+
+    /* Container */
+    .container{
+        max-width:1100px;
+        margin:80px auto;
+        padding:20px;
+    }
+
+    .title{
+        font-size:40px;
+        font-weight:700;
+        text-align:center;
+        text-transform:uppercase;
+        letter-spacing:3px;
+        margin-bottom:20px;
+    }
+
+    /* Contact Info Grid */
+    .info-grid{
+        display:grid;
+        grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+        gap:30px;
+        margin-top:40px;
+    }
+
+    .info-box{
+        background:#1a1a1a;
+        padding:25px;
+        border-radius:15px;
+        box-shadow:0 0 20px rgba(255,255,255,0.05);
+        transition:0.4s;
+    }
+
+    .info-box:hover{
+        transform:translateY(-5px);
+        box-shadow:0 0 25px rgba(200,157,245,0.2);
+    }
+
+    .info-box h3{
+        color:#c89df5;
+        margin-bottom:10px;
+        font-size:22px;
+    }
+
+    /* Contact Form */
+    .form{
+        margin-top:50px;
+        background:#1a1a1a;
+        padding:30px;
+        border-radius:20px;
+        box-shadow:0 0 30px rgba(255,255,255,0.05);
+    }
+
+    .form label{
+        display:block;
+        margin-bottom:5px;
+        font-size:15px;
+        opacity:0.8;
+    }
+
+    .form input, .form textarea{
+        width:100%;
+        padding:15px;
+        border:none;
+        border-radius:10px;
+        background:#222;
+        color:#fff;
+        margin-bottom:20px;
+        font-size:16px;
+        outline:none;
+    }
+
+    .form textarea{height:150px; resize:none;}
+
+    .form button{
+        width:100%;
+        padding:15px;
+        border:none;
+        border-radius:10px;
+        font-size:18px;
+        background:#c89df5;
+        color:#000;
+        font-weight:700;
+        cursor:pointer;
+        transition:0.3s;
+    }
+    .form button:hover{
+        opacity:0.8;
+    }
+
+    /* Map Placeholder */
+    .map-placeholder{
+        width:100%;
+        height:300px;
+        background:#222;
+        border:2px dashed #555;
+        border-radius:15px;
+        color:#888;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        font-size:18px;
+        text-transform:uppercase;
+        margin-top:40px;
+    }
+
+    footer{
+        text-align:center;
+        padding:30px;
+        margin-top:70px;
+        opacity:0.6;
+        border-top:1px solid #333;
+    }
+</style>
+</head>
+
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo" style="font-size:22px; font-weight:700;">
+        Luxury <span style="color:#c89df5;">Essence</span>
+    </div>
+    <div>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About</a>
+    </div>
+</nav>
+
+<!-- Content -->
+<div class="container">
+
+    <h1 class="title">Contact Us</h1>
+
+    <p style="text-align:center; opacity:0.8;">
+        Have questions, need assistance, or want to place an order?  
+        We’re here to help — reach out anytime.
+    </p>
+
+    <!-- Info Grid -->
+    <div class="info-grid">
+
+        <div class="info-box">
+            <h3>📍 Location</h3>
+            <p>Paarl, Western Cape, South Africa</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📞 Phone</h3>
+            <p>+27 00 000 0000</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📧 Email</h3>
+            <p>support@luxuryessence.com</p>
+        </div>
+
+        <div class="info-box">
+            <h3>📱 Socials</h3>
+            <p>Instagram: @LuxuryEssence</p>
+            <p>Facebook: Luxury Essence</p>
+        </div>
+
+    </div>
+
+    <!-- Contact Form -->
+    <div class="form">
+        <label>Name</label>
+        <input type="text" placeholder="Your Name">
+
+        <label>Email</label>
+        <input type="email" placeholder="Your Email">
+
+        <label>Message</label>
+        <textarea placeholder="Your Message"></textarea>
+
+        <button>Submit</button>
+    </div>
+
+    <!-- Map Placeholder -->
+    <div class="map-placeholder">
+        Map Placeholder
+    </div>
+
+</div>
+
+<footer>
+    © 2025 Fragrance Vitality— All Rights Reserved.
+</footer>
+
+</body>
+</html>
